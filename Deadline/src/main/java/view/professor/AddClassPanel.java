@@ -27,19 +27,185 @@ public class AddClassPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        middlePanel = new javax.swing.JPanel();
+        titleLabel = new javax.swing.JLabel();
+        startDateLabel = new javax.swing.JLabel();
+        endDateLabel = new javax.swing.JLabel();
+        mondayCheck = new javax.swing.JCheckBox();
+        sectionText = new javax.swing.JTextField();
+        courseText = new javax.swing.JTextField();
+        wednesdayCheck = new javax.swing.JCheckBox();
+        courseLabel = new javax.swing.JLabel();
+        tuesdayCheck = new javax.swing.JCheckBox();
+        subjectLabel = new javax.swing.JLabel();
+        endTime = new javax.swing.JComboBox<>();
+        thursdayCheck = new javax.swing.JCheckBox();
+        startTime = new javax.swing.JComboBox<>();
+        customButton = new javax.swing.JRadioButton();
+        createButton = new javax.swing.JButton();
+        startDateText = new javax.swing.JTextField();
+        subjectText = new javax.swing.JTextField();
+        endDateText = new javax.swing.JTextField();
+        saturdayCheck = new javax.swing.JCheckBox();
+        fridayCheck = new javax.swing.JCheckBox();
+        daysLabel = new javax.swing.JLabel();
+        sectionLabel = new javax.swing.JLabel();
+
+        setPreferredSize(new java.awt.Dimension(1920, 900));
+
+        middlePanel.setAlignmentX(10.0F);
+        middlePanel.setAlignmentY(10.0F);
+        middlePanel.setPreferredSize(new java.awt.Dimension(640, 900));
+        middlePanel.setLayout(new java.awt.GridLayout(6, 6));
+
+        titleLabel.setText("Class Creation");
+        middlePanel.add(titleLabel);
+
+        startDateLabel.setText("Start Date");
+        middlePanel.add(startDateLabel);
+
+        endDateLabel.setText("End Date");
+        middlePanel.add(endDateLabel);
+
+        mondayCheck.setText("M");
+        middlePanel.add(mondayCheck);
+
+        sectionText.setPreferredSize(new java.awt.Dimension(100, 26));
+        sectionText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                sectionTextActionPerformed(evt);
+            }
+        });
+        middlePanel.add(sectionText);
+
+        courseText.setMinimumSize(new java.awt.Dimension(30, 26));
+        courseText.setPreferredSize(new java.awt.Dimension(100, 26));
+        middlePanel.add(courseText);
+
+        wednesdayCheck.setText("W");
+        middlePanel.add(wednesdayCheck);
+
+        courseLabel.setText("Course Number");
+        middlePanel.add(courseLabel);
+
+        tuesdayCheck.setText("T");
+        middlePanel.add(tuesdayCheck);
+
+        subjectLabel.setText("Subject");
+        middlePanel.add(subjectLabel);
+
+        endTime.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        middlePanel.add(endTime);
+
+        thursdayCheck.setText("T");
+        middlePanel.add(thursdayCheck);
+
+        startTime.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        middlePanel.add(startTime);
+
+        customButton.setText("Custom Times");
+        middlePanel.add(customButton);
+
+        createButton.setText("Create Class");
+        middlePanel.add(createButton);
+
+        startDateText.setText("mm/dd/yy");
+        startDateText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startDateTextActionPerformed(evt);
+            }
+        });
+        middlePanel.add(startDateText);
+
+        subjectText.setText("jTextField1");
+        subjectText.setPreferredSize(new java.awt.Dimension(100, 26));
+        subjectText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subjectTextActionPerformed(evt);
+            }
+        });
+        middlePanel.add(subjectText);
+
+        endDateText.setText("mm/dd/yy");
+        endDateText.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                endDateTextActionPerformed(evt);
+            }
+        });
+        middlePanel.add(endDateText);
+
+        saturdayCheck.setText("S");
+        middlePanel.add(saturdayCheck);
+
+        fridayCheck.setText("F");
+        middlePanel.add(fridayCheck);
+
+        daysLabel.setText("Lecture Days");
+        middlePanel.add(daysLabel);
+
+        sectionLabel.setText("Section");
+        middlePanel.add(sectionLabel);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(301, 301, 301)
+                .addComponent(middlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(979, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(middlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(174, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void subjectTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subjectTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_subjectTextActionPerformed
+
+    private void sectionTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sectionTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_sectionTextActionPerformed
+
+    private void startDateTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startDateTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_startDateTextActionPerformed
+
+    private void endDateTextActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endDateTextActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_endDateTextActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel courseLabel;
+    private javax.swing.JTextField courseText;
+    private javax.swing.JButton createButton;
+    private javax.swing.JRadioButton customButton;
+    private javax.swing.JLabel daysLabel;
+    private javax.swing.JLabel endDateLabel;
+    private javax.swing.JTextField endDateText;
+    private javax.swing.JComboBox<String> endTime;
+    private javax.swing.JCheckBox fridayCheck;
+    private javax.swing.JPanel leftPanel1;
+    private javax.swing.JPanel leftPanel2;
+    private javax.swing.JPanel middlePanel;
+    private javax.swing.JCheckBox mondayCheck;
+    private javax.swing.JCheckBox saturdayCheck;
+    private javax.swing.JLabel sectionLabel;
+    private javax.swing.JTextField sectionText;
+    private javax.swing.JLabel startDateLabel;
+    private javax.swing.JTextField startDateText;
+    private javax.swing.JComboBox<String> startTime;
+    private javax.swing.JLabel subjectLabel;
+    private javax.swing.JTextField subjectText;
+    private javax.swing.JCheckBox thursdayCheck;
+    private javax.swing.JLabel titleLabel;
+    private javax.swing.JCheckBox tuesdayCheck;
+    private javax.swing.JCheckBox wednesdayCheck;
     // End of variables declaration//GEN-END:variables
 }
