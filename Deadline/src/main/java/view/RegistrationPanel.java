@@ -27,19 +27,97 @@ public class RegistrationPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        iAmAButtonGroup = new javax.swing.ButtonGroup();
+        accountCreationLabel = new javax.swing.JLabel();
+        accountCreationPanel = new javax.swing.JPanel();
+        iAmALabel = new javax.swing.JLabel();
+        studentRadioButton = new javax.swing.JRadioButton();
+        professorRadioButton = new javax.swing.JRadioButton();
+
+        accountCreationLabel.setText("Account Creation");
+
+        iAmALabel.setText("I Am A:");
+
+        iAmAButtonGroup.add(studentRadioButton);
+        studentRadioButton.setText("Student");
+        studentRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                studentRadioButtonActionPerformed(evt);
+            }
+        });
+
+        iAmAButtonGroup.add(professorRadioButton);
+        professorRadioButton.setText("Professor");
+        professorRadioButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                professorRadioButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout accountCreationPanelLayout = new javax.swing.GroupLayout(accountCreationPanel);
+        accountCreationPanel.setLayout(accountCreationPanelLayout);
+        accountCreationPanelLayout.setHorizontalGroup(
+            accountCreationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(accountCreationPanelLayout.createSequentialGroup()
+                .addGap(47, 47, 47)
+                .addComponent(iAmALabel)
+                .addGap(18, 18, 18)
+                .addComponent(studentRadioButton)
+                .addGap(34, 34, 34)
+                .addComponent(professorRadioButton)
+                .addContainerGap(84, Short.MAX_VALUE))
+        );
+        accountCreationPanelLayout.setVerticalGroup(
+            accountCreationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(accountCreationPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(accountCreationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(iAmALabel)
+                    .addComponent(studentRadioButton)
+                    .addComponent(professorRadioButton))
+                .addContainerGap(316, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(72, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(accountCreationLabel)
+                        .addGap(201, 201, 201))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(accountCreationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(55, 55, 55))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(accountCreationLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(accountCreationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(39, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void studentRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_studentRadioButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_studentRadioButtonActionPerformed
+
+    private void professorRadioButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_professorRadioButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_professorRadioButtonActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel accountCreationLabel;
+    private javax.swing.JPanel accountCreationPanel;
+    private javax.swing.ButtonGroup iAmAButtonGroup;
+    private javax.swing.JLabel iAmALabel;
+    private javax.swing.JRadioButton professorRadioButton;
+    private javax.swing.JRadioButton studentRadioButton;
     // End of variables declaration//GEN-END:variables
 }
