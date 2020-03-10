@@ -7,6 +7,8 @@ package view;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 
@@ -16,6 +18,7 @@ import javax.swing.border.EtchedBorder;
  */
 public class MainFrame extends javax.swing.JFrame {
     private LoginPanel loginPanel;
+    private RegistrationPanel registrationPanel;
     private CalendarPanel calendarPanel;
     private ClassesPanel classesPanel;
     private EmailPanel emailPanel;
@@ -28,6 +31,7 @@ public class MainFrame extends javax.swing.JFrame {
         this.menuPane.setVisible(false);
         this.titleJPanel.setVisible(false);
         
+        // Adding a Login panel
         this.loginPanel = new LoginPanel();
         this.loginPanel.setSize(this.getSize());
         this.loginPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
@@ -42,22 +46,49 @@ public class MainFrame extends javax.swing.JFrame {
                 // Otherwise --> error message and stay on the same page
             }
         });
-        //this.menuPane.addTab("Calendar", this.loginPanel);
+        this.loginPanel.addCreateAccMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                loginPanel.setVisible(false);
+                registrationPanel.setVisible(true);
+            }
+            @Override
+            public void mousePressed(MouseEvent e) {}
+            @Override
+            public void mouseReleased(MouseEvent e) {}
+            @Override
+            public void mouseEntered(MouseEvent e) {}
+            @Override
+            public void mouseExited(MouseEvent e) {}
+        });
         
+        // Adding a Registration panel
+        this.registrationPanel = new RegistrationPanel();
+        this.registrationPanel.setSize(this.getSize());
+        this.mainJPanel.add(this.registrationPanel);
+        // TODO add subscriber to registration
+        
+        // Adding a Calendar panel
         this.calendarPanel = new CalendarPanel();
-        this.menuPane.addTab("Calendar", this.calendarPanel);
+        this.calendarPanel.setSize(this.panelForCalendar.getSize());
+        this.panelForCalendar.add(this.calendarPanel);
+        // this.menuPane.addTab("Calendar", this.calendarPanel);
         
+        // Adding a Classes panel
         this.classesPanel = new ClassesPanel();
-        this.classesPanel.setSize(this.menuPane.getSize());
-        this.classesPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
+        this.classesPanel.setSize(this.panelForClasses.getSize());
+        this.panelForClasses.add(this.classesPanel);
+        // this.classesPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
         // this.mainJPanel.add(this.classesPanel);
         
-        this.menuPane.addTab("Classes", this.classesPanel);
+        // this.menuPane.addTab("Classes", this.classesPanel);
         
         this.classesPanel.addAddClassBtnActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Clicked");
                 classesPanel.setVisible(false);
+                // TODO switch to AddClassPanel (as student)
+                
             }
         });
         
@@ -83,6 +114,9 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         logoutBtn = new javax.swing.JButton();
         menuPane = new javax.swing.JTabbedPane();
+        panelForCalendar = new javax.swing.JPanel();
+        panelForClasses = new javax.swing.JPanel();
+        jPanel1 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Deadline");
@@ -96,7 +130,13 @@ public class MainFrame extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
         jLabel1.setText("DeadLine");
 
+        logoutBtn.setBackground(new java.awt.Color(102, 102, 102));
         logoutBtn.setText("Logout");
+        logoutBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logoutBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout titleJPanelLayout = new javax.swing.GroupLayout(titleJPanel);
         titleJPanel.setLayout(titleJPanelLayout);
@@ -105,21 +145,41 @@ public class MainFrame extends javax.swing.JFrame {
             .addGroup(titleJPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 698, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(logoutBtn)
                 .addContainerGap())
         );
         titleJPanelLayout.setVerticalGroup(
             titleJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, titleJPanelLayout.createSequentialGroup()
+            .addGroup(titleJPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(titleJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
-                    .addComponent(logoutBtn))
+                .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
                 .addContainerGap())
+            .addComponent(logoutBtn, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         menuPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        menuPane.setToolTipText("");
+        menuPane.setCursor(new java.awt.Cursor(java.awt.Cursor.MOVE_CURSOR));
+
+        panelForCalendar.setLayout(new java.awt.BorderLayout());
+        menuPane.addTab("Calendar", panelForCalendar);
+
+        panelForClasses.setLayout(new java.awt.BorderLayout());
+        menuPane.addTab("Classes", panelForClasses);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 886, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 491, Short.MAX_VALUE)
+        );
+
+        menuPane.addTab("Profile", jPanel1);
 
         javax.swing.GroupLayout mainJPanelLayout = new javax.swing.GroupLayout(mainJPanel);
         mainJPanel.setLayout(mainJPanelLayout);
@@ -154,6 +214,13 @@ public class MainFrame extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
+        // TODO add your handling code here:
+        this.loginPanel.setVisible(true);
+        this.menuPane.setVisible(false);
+        this.titleJPanel.setVisible(false);
+    }//GEN-LAST:event_logoutBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -192,9 +259,12 @@ public class MainFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JButton logoutBtn;
     private javax.swing.JPanel mainJPanel;
     private javax.swing.JTabbedPane menuPane;
+    private javax.swing.JPanel panelForCalendar;
+    private javax.swing.JPanel panelForClasses;
     private javax.swing.JPanel titleJPanel;
     // End of variables declaration//GEN-END:variables
 }
