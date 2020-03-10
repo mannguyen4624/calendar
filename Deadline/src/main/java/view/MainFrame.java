@@ -22,6 +22,7 @@ public class MainFrame extends javax.swing.JFrame {
     private CalendarPanel calendarPanel;
     private ClassesPanel classesPanel;
     private EmailPanel emailPanel;
+    
     /**
      * Creates new form MainFrame
      */
@@ -40,9 +41,18 @@ public class MainFrame extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 // TODO check for correct username and password
                 // if it is correct --> display menuPane and titleJpanle
-                loginPanel.setVisible(false);
-                menuPane.setVisible(true);
-                titleJPanel.setVisible(true);
+                if (loginPanel.getEmail().length() != 0 && loginPanel.getPwd().length() != 0
+                        && (loginPanel.getEmail().equals("student") && loginPanel.getPwd().equals("student")
+                        || (loginPanel.getEmail().equals("prof") && loginPanel.getPwd().equals("prof")))) {
+                    loginPanel.setVisible(false);
+                    loginPanel.clearFields();
+                    menuPane.setVisible(true);
+                    titleJPanel.setVisible(true);
+                } else {
+                    // Display an error message 
+                    
+                }
+                
                 // Otherwise --> error message and stay on the same page
             }
         });
@@ -72,17 +82,11 @@ public class MainFrame extends javax.swing.JFrame {
         this.calendarPanel = new CalendarPanel();
         this.calendarPanel.setSize(this.panelForCalendar.getSize());
         this.panelForCalendar.add(this.calendarPanel);
-        // this.menuPane.addTab("Calendar", this.calendarPanel);
         
         // Adding a Classes panel
         this.classesPanel = new ClassesPanel();
         this.classesPanel.setSize(this.panelForClasses.getSize());
         this.panelForClasses.add(this.classesPanel);
-        // this.classesPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
-        // this.mainJPanel.add(this.classesPanel);
-        
-        // this.menuPane.addTab("Classes", this.classesPanel);
-        
         this.classesPanel.addAddClassBtnActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Clicked");
@@ -221,41 +225,6 @@ public class MainFrame extends javax.swing.JFrame {
         this.menuPane.setVisible(false);
         this.titleJPanel.setVisible(false);
     }//GEN-LAST:event_logoutBtnActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//                }
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new MainFrame().setVisible(true);
-//            }
-//        });
-//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

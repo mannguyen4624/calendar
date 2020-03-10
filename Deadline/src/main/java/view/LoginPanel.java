@@ -68,10 +68,10 @@ public class LoginPanel extends javax.swing.JPanel {
         emailLabel = new javax.swing.JLabel();
         pwdLabel = new javax.swing.JLabel();
         pwdText = new javax.swing.JPasswordField();
-        createAccLabel = new javax.swing.JLabel();
         forgetPwdLabel = new javax.swing.JLabel();
+        createAccLabel = new javax.swing.JLabel();
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         loginBtn.setText("Login");
 
@@ -84,11 +84,11 @@ public class LoginPanel extends javax.swing.JPanel {
         pwdLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 14)); // NOI18N
         pwdLabel.setText("Password:");
 
-        createAccLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        createAccLabel.setText("Click here to create an account.");
+        forgetPwdLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 2, 12)); // NOI18N
+        forgetPwdLabel.setText("Forgot your password? Click here!");
 
-        forgetPwdLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
-        forgetPwdLabel.setText("Click here if you forgot your password.");
+        createAccLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 2, 12)); // NOI18N
+        createAccLabel.setText("Need an account? Click here to signup!");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -108,7 +108,7 @@ public class LoginPanel extends javax.swing.JPanel {
                                 .addComponent(emailText, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
                                 .addComponent(pwdText)
                                 .addComponent(pwdLabel))
-                            .addComponent(createAccLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(createAccLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(58, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -121,18 +121,18 @@ public class LoginPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(titleLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(createAccLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 12, Short.MAX_VALUE)
                 .addComponent(emailLabel)
-                .addGap(5, 5, 5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(emailText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pwdLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(pwdText, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(forgetPwdLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(createAccLabel)
-                .addGap(25, 25, 25)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(loginBtn)
                 .addGap(45, 45, 45))
         );
@@ -144,17 +144,33 @@ public class LoginPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(257, 257, 257)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(253, Short.MAX_VALUE))
+                .addContainerGap(249, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(143, 143, 143)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(176, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(172, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    // Clears the email and password fields
+    public void clearFields() {
+        this.emailText.setText("");
+        this.pwdText.setText("");
+    }
+    
+    // Returns the value of the email text field
+    public String getEmail() {
+        return this.emailText.getText();
+    }
+    
+    // Returns the value of the password text field
+    public String getPwd() {
+        return String.valueOf(this.pwdText.getPassword());
+    }
+    
     public void addLoginBtnActionListener(ActionListener a) {
         if (!this.loginBtnActionListeners.contains(a)) {
             this.loginBtnActionListeners.add(a);
