@@ -5,6 +5,9 @@
  */
 package view;
 
+import javax.swing.JFrame;
+import view.professor.AddClassPanel;
+
 /**
  *
  * @author Binh
@@ -75,6 +78,11 @@ public class MainFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainFrame().setVisible(true);
+                JFrame myFrame = new JFrame();
+                AddClassPanel classPanel = new AddClassPanel();
+                myFrame.getContentPane().add(classPanel);
+                myFrame.pack();
+                myFrame.setVisible(true);
             }
         });
     }

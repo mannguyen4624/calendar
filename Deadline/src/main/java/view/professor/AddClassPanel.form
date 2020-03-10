@@ -22,18 +22,17 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-              <Component id="middlePanel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="1584" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+              <Component id="middlePanel" min="-2" pref="348" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-              <Component id="middlePanel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="519" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="middlePanel" min="-2" pref="320" max="-2" attributes="0"/>
+              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -53,123 +52,49 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Group type="102" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="titleLabel" min="-2" pref="100" max="-2" attributes="0"/>
-                                  <Group type="102" attributes="0">
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="subjectText" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                                          <Component id="subjectLabel" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
-                                          <Component id="daysLabel" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="courseLabel" min="-2" pref="100" max="-2" attributes="0"/>
-                                          <Component id="courseText" min="-2" pref="100" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="sectionText" min="-2" pref="100" max="-2" attributes="0"/>
-                                  <Component id="sectionLabel" min="-2" pref="50" max="-2" attributes="0"/>
-                              </Group>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
-                                      <Component id="startTime" max="32767" attributes="0"/>
-                                      <Group type="102" attributes="0">
-                                          <Component id="mondayCheck" min="-2" pref="50" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                          <Component id="tuesdayCheck" min="-2" pref="50" max="-2" attributes="0"/>
-                                          <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                          <Component id="wednesdayCheck" min="-2" pref="50" max="-2" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="startDateLabel" min="-2" pref="100" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Component id="startDateText" alignment="0" min="-2" pref="150" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="endDateText" min="-2" pref="150" max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="endDateLabel" min="-2" pref="100" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" attributes="0">
-                                              <Component id="thursdayCheck" min="-2" pref="50" max="-2" attributes="0"/>
-                                              <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                                              <Component id="fridayCheck" min="-2" pref="50" max="-2" attributes="0"/>
-                                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                                              <Component id="saturdayCheck" min="-2" pref="50" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="endTime" max="32767" attributes="0"/>
-                                      </Group>
-                                  </Group>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <Component id="customButton" alignment="0" min="-2" max="-2" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
-                          <EmptySpace min="-2" pref="100" max="-2" attributes="0"/>
-                          <Component id="createButton" min="-2" pref="100" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="coursePanel" min="-2" pref="336" max="-2" attributes="0"/>
+                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="daysPanel" alignment="1" max="32767" attributes="0"/>
+                      <Component id="timePanel" alignment="0" max="32767" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+              </Group>
+              <Group type="102" alignment="0" attributes="0">
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="datePanel" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="102" attributes="0">
+                          <EmptySpace min="-2" pref="115" max="-2" attributes="0"/>
+                          <Component id="titleLabel" min="-2" pref="100" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="101" max="-2" attributes="0"/>
+                          <Component id="createButtonPanel" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="0" pref="10" max="32767" attributes="0"/>
+                  <EmptySpace min="21" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" attributes="0">
-                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
                   <Component id="titleLabel" min="-2" pref="25" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="subjectLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="sectionLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="courseLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="subjectText" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="courseText" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="sectionText" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                  <Component id="daysLabel" min="-2" pref="25" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="mondayCheck" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="tuesdayCheck" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="wednesdayCheck" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="thursdayCheck" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="fridayCheck" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="saturdayCheck" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="startTime" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="endTime" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
-                  <Component id="customButton" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="startDateLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="endDateLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="startDateText" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                      <Component id="endDateText" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                  <Component id="createButton" min="-2" pref="25" max="-2" attributes="0"/>
-                  <EmptySpace min="0" pref="36" max="32767" attributes="0"/>
+                  <Component id="coursePanel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="daysPanel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="timePanel" min="-2" pref="84" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="datePanel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Component id="createButtonPanel" min="-2" max="-2" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -180,158 +105,438 @@
             <Property name="text" type="java.lang.String" value="Class Creation"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="startDateLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Start Date"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="endDateLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="End Date"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="mondayCheck">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="M"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="sectionText">
-          <Properties>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[100, 26]"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sectionTextActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="courseText">
-          <Properties>
-            <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[30, 26]"/>
-            </Property>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[100, 26]"/>
-            </Property>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="wednesdayCheck">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="W"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="courseLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Course"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="tuesdayCheck">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="T"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="subjectLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Subject"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="endTime">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
-              </StringArray>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="endTimeActionPerformed"/>
-          </Events>
+        <Container class="javax.swing.JPanel" name="coursePanel">
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="subjectText" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="subjectLabel" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="courseLabel" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="courseText" alignment="0" min="-2" pref="100" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="sectionLabel" min="-2" pref="128" max="-2" attributes="0"/>
+                          <Component id="sectionText" min="-2" pref="115" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="subjectLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="courseLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="sectionLabel" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="subjectText" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="courseText" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="sectionText" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="subjectLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Subject"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="courseLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Course"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="sectionLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Section"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="sectionText">
+              <Properties>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[100, 26]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="sectionTextActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="courseText">
+              <Properties>
+                <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[30, 26]"/>
+                </Property>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[100, 26]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="courseTextActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="subjectText">
+              <Properties>
+                <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
+                  <Dimension value="[100, 26]"/>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="subjectTextActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="daysPanel">
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="daysPanel.setVisible(false);"/>
           </AuxValues>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="thursdayCheck">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="T"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JComboBox" name="startTime">
-          <Properties>
-            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-              <StringArray count="4">
-                <StringItem index="0" value="Item 1"/>
-                <StringItem index="1" value="Item 2"/>
-                <StringItem index="2" value="Item 3"/>
-                <StringItem index="3" value="Item 4"/>
-              </StringArray>
-            </Property>
-          </Properties>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="daysLabel" min="-2" pref="100" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="mondayCheck" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="tuesdayCheck" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="wednesdayCheck" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                              <Component id="thursdayCheck" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                              <Component id="fridayCheck" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                              <Component id="saturdayCheck" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="daysLabel" min="-2" pref="25" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="wednesdayCheck" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="saturdayCheck" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="tuesdayCheck" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="fridayCheck" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="thursdayCheck" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="mondayCheck" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="daysLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Lecture Days"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="mondayCheck">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="M"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mondayCheckActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="tuesdayCheck">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="T"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tuesdayCheckActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="wednesdayCheck">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="W"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="wednesdayCheckActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="thursdayCheck">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="R"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="thursdayCheckActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="fridayCheck">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="F"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="fridayCheckActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JCheckBox" name="saturdayCheck">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="S"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="saturdayCheckActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="timePanel">
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="timePanel.setVisible(false);"/>
           </AuxValues>
-        </Component>
-        <Component class="javax.swing.JRadioButton" name="customButton">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Custom Times"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="customButtonActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JButton" name="createButton">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Create Class"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="startDateText">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="mm/dd/yy"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="startDateTextActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="subjectText">
-          <Properties>
-            <Property name="preferredSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
-              <Dimension value="[100, 26]"/>
-            </Property>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="subjectTextActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="endDateText">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="mm/dd/yy"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="endDateTextActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="saturdayCheck">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="S"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JCheckBox" name="fridayCheck">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="F"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="daysLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Lecture Days"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="sectionLabel">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Section"/>
-          </Properties>
-        </Component>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="customButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="startTimeLabel" min="-2" pref="111" max="-2" attributes="0"/>
+                          <Component id="startTime" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="endTimeLabel" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="endTime" min="-2" pref="159" max="-2" attributes="0"/>
+                              <EmptySpace max="32767" attributes="0"/>
+                          </Group>
+                      </Group>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="startTimeLabel" alignment="3" min="-2" pref="19" max="-2" attributes="0"/>
+                          <Component id="endTimeLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="startTime" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="endTime" alignment="3" min="-2" pref="25" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="customButton" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="startTimeLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Start Time"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="endTimeLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="End Time"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="startTime">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="10">
+                    <StringItem index="0" value="--select time--"/>
+                    <StringItem index="1" value="8:00 AM"/>
+                    <StringItem index="2" value="9:15 AM"/>
+                    <StringItem index="3" value="9:50 AM"/>
+                    <StringItem index="4" value="10:30 AM"/>
+                    <StringItem index="5" value="11:45 AM"/>
+                    <StringItem index="6" value="1:35 PM"/>
+                    <StringItem index="7" value="2:50 PM"/>
+                    <StringItem index="8" value="3:25 PM"/>
+                    <StringItem index="9" value="4:35 PM"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="startTimeActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="endTime">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="14">
+                    <StringItem index="0" value="--select time--"/>
+                    <StringItem index="1" value="9:05 AM"/>
+                    <StringItem index="2" value="9:40 AM"/>
+                    <StringItem index="3" value="10:20 AM"/>
+                    <StringItem index="4" value="11:30 AM"/>
+                    <StringItem index="5" value="11:35 AM"/>
+                    <StringItem index="6" value="12:50 PM"/>
+                    <StringItem index="7" value="1:25 PM"/>
+                    <StringItem index="8" value="2:40 PM"/>
+                    <StringItem index="9" value="3:15 PM"/>
+                    <StringItem index="10" value="4:30 PM"/>
+                    <StringItem index="11" value="5:05 PM"/>
+                    <StringItem index="12" value="5:25 PM"/>
+                    <StringItem index="13" value="5:40 PM"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="endTimeActionPerformed"/>
+              </Events>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JRadioButton" name="customButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Custom Times"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="customButtonActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="datePanel">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="datePanel.setVisible(false);"/>
+          </AuxValues>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="startDateLabel" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="startDateText" alignment="0" min="-2" pref="145" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="endDateLabel" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Component id="endDateText" min="-2" pref="156" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="startDateLabel" min="-2" max="-2" attributes="0"/>
+                          <Component id="endDateLabel" min="-2" pref="19" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="0" pref="0" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="endDateText" min="-2" pref="25" max="-2" attributes="0"/>
+                          <Component id="startDateText" alignment="0" min="-2" pref="25" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JLabel" name="startDateLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Start Date"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="endDateLabel">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="End Date"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="startDateText">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="mm/dd/yy"/>
+              </Properties>
+              <Events>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="startDateTextFocusGained"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="startDateTextActionPerformed"/>
+              </Events>
+            </Component>
+            <Component class="javax.swing.JTextField" name="endDateText">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="mm/dd/yy"/>
+              </Properties>
+              <Events>
+                <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="endDateTextFocusGained"/>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="endDateTextActionPerformed"/>
+              </Events>
+            </Component>
+          </SubComponents>
+        </Container>
+        <Container class="javax.swing.JPanel" name="createButtonPanel">
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="createButtonPanel.setVisible(false);"/>
+          </AuxValues>
+
+          <Layout>
+            <DimensionLayout dim="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="createButton" min="-2" pref="114" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="1" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+            <DimensionLayout dim="1">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="createButton" min="-2" pref="25" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+            </DimensionLayout>
+          </Layout>
+          <SubComponents>
+            <Component class="javax.swing.JButton" name="createButton">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Create Class"/>
+              </Properties>
+            </Component>
+          </SubComponents>
+        </Container>
       </SubComponents>
     </Container>
   </SubComponents>
