@@ -5,6 +5,8 @@
  */
 package view;
 
+import javax.swing.JFrame;
+
 /**
  *
  * @author Binh
@@ -74,6 +76,11 @@ public class MainFrame extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new MainFrame().setVisible(true);
+                JFrame myFrame = new JFrame();
+                RegistrationPanel regPanel = new RegistrationPanel();
+                myFrame.getContentPane().add(regPanel);
+                myFrame.pack();
+                myFrame.setVisible(true);
             }
         });
     }
