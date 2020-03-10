@@ -5,6 +5,8 @@
  */
 package view;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
 
@@ -13,17 +15,56 @@ import javax.swing.border.EtchedBorder;
  * @author Binh
  */
 public class MainFrame extends javax.swing.JFrame {
-    
+    private LoginPanel loginPanel;
+    private CalendarPanel calendarPanel;
+    private ClassesPanel classesPanel;
+    private EmailPanel emailPanel;
     /**
      * Creates new form MainFrame
      */
     public MainFrame() {
         initComponents();
         
+        this.menuPane.setVisible(false);
+        this.titleJPanel.setVisible(false);
+        
+        this.loginPanel = new LoginPanel();
+        this.loginPanel.setSize(this.getSize());
+        this.loginPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
+        this.mainJPanel.add(this.loginPanel);
+        this.loginPanel.addLoginBtnActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // TODO check for correct username and password
+                // if it is correct --> display menuPane and titleJpanle
+                loginPanel.setVisible(false);
+                menuPane.setVisible(true);
+                titleJPanel.setVisible(true);
+                // Otherwise --> error message and stay on the same page
+            }
+        });
+        //this.menuPane.addTab("Calendar", this.loginPanel);
+        
+        this.calendarPanel = new CalendarPanel();
+        this.menuPane.addTab("Calendar", this.calendarPanel);
+        
         this.classesPanel = new ClassesPanel();
-        this.classesPanel.setSize(mainJPanel.getSize());
+        this.classesPanel.setSize(this.menuPane.getSize());
         this.classesPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
-        mainJPanel.add(classesPanel);
+        // this.mainJPanel.add(this.classesPanel);
+        
+        this.menuPane.addTab("Classes", this.classesPanel);
+        
+        this.classesPanel.addAddClassBtnActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                System.out.println("Clicked");
+                classesPanel.setVisible(false);
+            }
+        });
+        
+        this.emailPanel = new EmailPanel();
+        this.emailPanel.setSize(this.menuPane.getSize());
+        this.emailPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
+        // this.mainJPanel.add(this.emailPanel);
         
         this.pack();
     }
@@ -38,33 +79,76 @@ public class MainFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         mainJPanel = new javax.swing.JPanel();
+        titleJPanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        logoutBtn = new javax.swing.JButton();
+        menuPane = new javax.swing.JTabbedPane();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Deadline");
         setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(900, 600));
+
+        mainJPanel.setPreferredSize(new java.awt.Dimension(900, 600));
+
+        titleJPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        jLabel1.setText("DeadLine");
+
+        logoutBtn.setText("Logout");
+
+        javax.swing.GroupLayout titleJPanelLayout = new javax.swing.GroupLayout(titleJPanel);
+        titleJPanel.setLayout(titleJPanelLayout);
+        titleJPanelLayout.setHorizontalGroup(
+            titleJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(titleJPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 698, Short.MAX_VALUE)
+                .addComponent(logoutBtn)
+                .addContainerGap())
+        );
+        titleJPanelLayout.setVerticalGroup(
+            titleJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, titleJPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(titleJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE)
+                    .addComponent(logoutBtn))
+                .addContainerGap())
+        );
+
+        menuPane.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         javax.swing.GroupLayout mainJPanelLayout = new javax.swing.GroupLayout(mainJPanel);
         mainJPanel.setLayout(mainJPanelLayout);
         mainJPanelLayout.setHorizontalGroup(
             mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 352, Short.MAX_VALUE)
+            .addComponent(titleJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, mainJPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(menuPane)
+                .addContainerGap())
         );
         mainJPanelLayout.setVerticalGroup(
             mainJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 367, Short.MAX_VALUE)
+            .addGroup(mainJPanelLayout.createSequentialGroup()
+                .addComponent(titleJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(menuPane)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(mainJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addComponent(mainJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(mainJPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 10, Short.MAX_VALUE))
+            .addComponent(mainJPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -74,40 +158,43 @@ public class MainFrame extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainFrame().setVisible(true);
-            }
-        });
-    }
+//    public static void main(String args[]) {
+//        /* Set the Nimbus look and feel */
+//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+//         */
+//        try {
+//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+//                if ("Nimbus".equals(info.getName())) {
+//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+//                    break;
+//                }
+//            }
+//        } catch (ClassNotFoundException ex) {
+//            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (InstantiationException ex) {
+//            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (IllegalAccessException ex) {
+//            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+//            java.util.logging.Logger.getLogger(MainFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+//        }
+//        //</editor-fold>
+//
+//        /* Create and display the form */
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new MainFrame().setVisible(true);
+//            }
+//        });
+//    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton logoutBtn;
     private javax.swing.JPanel mainJPanel;
+    private javax.swing.JTabbedPane menuPane;
+    private javax.swing.JPanel titleJPanel;
     // End of variables declaration//GEN-END:variables
-    private ClassesPanel classesPanel;
 }

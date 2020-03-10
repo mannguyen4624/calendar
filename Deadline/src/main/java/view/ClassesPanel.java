@@ -1,19 +1,41 @@
 package view;
 
+import java.awt.event.ActionEvent;
+import java.util.List;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
 /**
  *
  * @author Binh
  */
 public class ClassesPanel extends javax.swing.JPanel {
-
+    private List<ActionListener> addClassBtnActionListeners;
     /**
      * Creates new form ClassesPanel
      */
     public ClassesPanel() {
         initComponents();
         
-        // TODO Add scroll bars
-        
+        // Allows to add subscribers to the events on addClassBtn element
+        this.addClassBtnActionListeners = new ArrayList<>();
+        this.addClassBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                for (ActionListener listener : addClassBtnActionListeners) {
+                    listener.actionPerformed(e);
+                }
+            }
+        });
+    }
+    
+    public void addAddClassBtnActionListener(ActionListener a) {
+        if (!this.addClassBtnActionListeners.contains(a)) {
+            this.addClassBtnActionListeners.add(a);
+        }
+    }
+    
+    public void removeAddClassBtnActionListener(ActionListener a) {
+        this.addClassBtnActionListeners.remove(a);
     }
 
     /**
@@ -29,11 +51,8 @@ public class ClassesPanel extends javax.swing.JPanel {
         jScrollPane1 = new javax.swing.JScrollPane();
 
         addClassBtn.setText("Add Class");
-        addClassBtn.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                addClassBtnMouseClicked(evt);
-            }
-        });
+
+        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -44,7 +63,7 @@ public class ClassesPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 266, Short.MAX_VALUE)
+                        .addGap(0, 352, Short.MAX_VALUE)
                         .addComponent(addClassBtn)))
                 .addContainerGap())
         );
@@ -54,19 +73,14 @@ public class ClassesPanel extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 300, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(addClassBtn)
-                .addContainerGap(24, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void addClassBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addClassBtnMouseClicked
-        // TODO add your handling code here:
-        // transition to another class
-        this.setVisible(false);
-    }//GEN-LAST:event_addClassBtnMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addClassBtn;
     private javax.swing.JScrollPane jScrollPane1;
     // End of variables declaration//GEN-END:variables
+
 }
