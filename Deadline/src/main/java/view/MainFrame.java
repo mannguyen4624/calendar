@@ -49,11 +49,12 @@ public class MainFrame extends javax.swing.JFrame {
                     menuPane.setVisible(true);
                     titleJPanel.setVisible(true);
                 } else {
-                    // Display an error message 
-                    
+                    // Display an error message --> JOptionPane for now?
+                    String errorMsg = "Your account was not found. Here are the possible issues:\n"
+                            + "- Your account is not verified. Please check your personal email;\n"
+                            + "- Wrong email and/or password. Please try again;";
+                    JOptionPane.showMessageDialog(null, errorMsg, "", JOptionPane.INFORMATION_MESSAGE);
                 }
-                
-                // Otherwise --> error message and stay on the same page
             }
         });
         this.loginPanel.addCreateAccMouseListener(new MouseListener() {
