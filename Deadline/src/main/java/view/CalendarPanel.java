@@ -5,6 +5,10 @@
  */
 package view;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 import view.EventPanel;
 
 /**
@@ -12,12 +16,23 @@ import view.EventPanel;
  * @author Binh
  */
 public class CalendarPanel extends javax.swing.JPanel {
-
+    private List<ActionListener> createEventActionListeners;
     /**
      * Creates new form CalendarPanel
      */
     public CalendarPanel() {
         initComponents();
+        
+        this.createEventActionListeners = new ArrayList<>();
+        this.createEventBtn.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for (ActionListener listener : createEventActionListeners) {
+                    listener.actionPerformed(e);
+                }
+            }
+            
+        });
     }
 
     /**
@@ -31,7 +46,7 @@ public class CalendarPanel extends javax.swing.JPanel {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         calendarTable = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
+        createEventBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
@@ -70,10 +85,10 @@ public class CalendarPanel extends javax.swing.JPanel {
         calendarTable.setShowVerticalLines(true);
         jScrollPane1.setViewportView(calendarTable);
 
-        jButton1.setText("Create Event");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        createEventBtn.setText("Create Event");
+        createEventBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                createEventBtnActionPerformed(evt);
             }
         });
 
@@ -131,7 +146,7 @@ public class CalendarPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(65, 65, 65)
-                        .addComponent(jButton1)
+                        .addComponent(createEventBtn)
                         .addGap(102, 102, 102)
                         .addComponent(jButton3)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -152,20 +167,36 @@ public class CalendarPanel extends javax.swing.JPanel {
                     .addComponent(jButton2)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jButton1)))
+                        .addComponent(createEventBtn)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
             .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void createEventBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createEventBtnActionPerformed
         EventPanel eventPanel = new EventPanel();
         this.add(eventPanel);
         this.revalidate();
         this.repaint();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_createEventBtnActionPerformed
 
+    // Add the event to the calendar based on the given row and column
+    public void addEvent(int row, int col, String name) {
+        String newEntry = this.calendarTable.getValueAt(row, col) + "\n" + name;
+        this.calendarTable.setValueAt(newEntry, row, col);
+    }
+    
+    public void addCreateEventBtnActionListener(ActionListener a) {
+        if (!this.createEventActionListeners.contains(a)) {
+            this.createEventActionListeners.add(a);
+        }
+    }
+    
+    public void removeCreateEventBtnActionListener(ActionListener a) {
+        this.createEventActionListeners.remove(a);
+    }
+    
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -177,7 +208,7 @@ public class CalendarPanel extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTable calendarTable;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton createEventBtn;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;

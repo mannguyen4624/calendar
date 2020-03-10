@@ -5,12 +5,8 @@
  */
 package utils;
 
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
-import java.util.Properties;
+import org.apache.commons.configuration.ConfigurationException;
+import org.apache.commons.configuration.PropertiesConfiguration;
 
 /**
  *
@@ -20,29 +16,23 @@ public final class Utility {
     
     // Load the value corresponsing to the given key
     public static String loadFromFile(String key) {
-        String toReturn = null;
-        try (InputStream in = new FileInputStream("src/test/java/config.properties")) {
-            Properties prop = new Properties();
-            prop.load(in);
-                    
-            toReturn = String.valueOf(prop.getProperty(key));
-                    
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        try {
+        PropertiesConfiguration config = new PropertiesConfiguration("src/test/java/config.properties");
+        return config.getString(key);
         }
-        return toReturn;
+        catch (ConfigurationException e) {
+            System.out.println("Couldn't open config file");
+            return null;
+        }   
     }
     
     public static void saveToFile(String key, String val) {
-        try (OutputStream out = new FileOutputStream("src/test/java/config.properties")) {
-            Properties prop = new Properties();
-            prop.setProperty(key, val);
-            prop.store(out, null);
-            
-        } catch (IOException io) {
-            io.printStackTrace();
+        try {
+            PropertiesConfiguration config = new PropertiesConfiguration("src/test/java/config.properties");
+            config.setProperty(key, val);
+            config.save();
+        } catch (ConfigurationException e) {
+            System.out.println("Couldn't open config file");
         }
     }
-    
-    
 }

@@ -9,8 +9,12 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
+import org.apache.commons.configuration.ConfigurationException;
+import utils.Utility;
 
 /**
  *
@@ -20,14 +24,18 @@ public class MainFrame extends javax.swing.JFrame {
     private LoginPanel loginPanel;
     private RegistrationPanel registrationPanel;
     private CalendarPanel calendarPanel;
+    private EventPanel eventPanel;
     private ClassesPanel classesPanel;
     private EmailPanel emailPanel;
+    private int loggedUser;  // 0 - not logged in, -1 - student, 1 - professor
     
     /**
      * Creates new form MainFrame
      */
     public MainFrame() {
         initComponents();
+        
+        this.loggedUser = 0;
         
         this.menuPane.setVisible(false);
         this.titleJPanel.setVisible(false);
@@ -39,20 +47,31 @@ public class MainFrame extends javax.swing.JFrame {
         this.mainJPanel.add(this.loginPanel);
         this.loginPanel.addLoginBtnActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // TODO check for correct username and password
                 // if it is correct --> display menuPane and titleJpanle
-                if (loginPanel.getEmail().length() != 0 && loginPanel.getPwd().length() != 0
-                        && (loginPanel.getEmail().equals("student") && loginPanel.getPwd().equals("student")
-                        || (loginPanel.getEmail().equals("prof") && loginPanel.getPwd().equals("prof")))) {
-                    loginPanel.setVisible(false);
-                    loginPanel.clearFields();
-                    menuPane.setVisible(true);
-                    titleJPanel.setVisible(true);
-                } else {
-                    // Display an error message --> JOptionPane for now?
-                    String errorMsg = "Your account was not found. Here are the possible issues:\n"
-                            + "- Your account is not verified. Please check your personal email;\n"
-                            + "- Wrong email and/or password. Please try again;";
+                String errorMsg = "Your account was not found. Here are the possible issues:\n"
+                        + "- Your account is not verified. Please check your personal email;\n"
+                        + "- Wrong email and/or password. Please try again;";
+                if (loginPanel.getEmail().length() != 0 && loginPanel.getPwd().length() != 0) {
+                    if (loginPanel.getEmail().equals(Utility.loadFromFile("studentEmail"))
+                            && loginPanel.getPwd().equals(Utility.loadFromFile("studentPwd"))) {
+                        loginPanel.setVisible(false);
+                        loginPanel.clearFields();
+                        menuPane.setVisible(true);
+                        titleJPanel.setVisible(true);
+                        // Logged as a student
+                        loggedUser = -1;
+                    } else if (loginPanel.getEmail().equals(Utility.loadFromFile("professorEmail"))
+                            && loginPanel.getPwd().equals(Utility.loadFromFile("professorPwd"))) {
+                        loginPanel.setVisible(false);
+                        loginPanel.clearFields();
+                        menuPane.setVisible(true);
+                        titleJPanel.setVisible(true);
+                        // Logged as a professor
+                        loggedUser = 1;
+                    } else {
+                        JOptionPane.showMessageDialog(null, errorMsg, "", JOptionPane.INFORMATION_MESSAGE);
+                    }
+                } else { 
                     JOptionPane.showMessageDialog(null, errorMsg, "", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
@@ -77,12 +96,57 @@ public class MainFrame extends javax.swing.JFrame {
         this.registrationPanel = new RegistrationPanel();
         this.registrationPanel.setSize(this.getSize());
         this.mainJPanel.add(this.registrationPanel);
-        // TODO add subscriber to registration
+        this.registrationPanel.addCreateAccBtnActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (registrationPanel.isStudent()) {
+                    // Creating a student account 
+                    Utility.saveToFile("studentEmail", registrationPanel.getEmail());
+                    Utility.saveToFile("studentPwd", registrationPanel.getPwd());
+                } else {
+                    // Creating a professor account 
+                    Utility.saveToFile("professorEmail", registrationPanel.getEmail());
+                    Utility.saveToFile("professorPwd", registrationPanel.getPwd());
+                }
+                registrationPanel.setVisible(false);
+                emailPanel.setEmail(registrationPanel.getEmail());
+                emailPanel.setVisible(true);
+                
+            }
+            
+        });
         
         // Adding a Calendar panel
         this.calendarPanel = new CalendarPanel();
         this.calendarPanel.setSize(this.panelForCalendar.getSize());
         this.panelForCalendar.add(this.calendarPanel);
+        this.calendarPanel.addCreateEventBtnActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JDialog jd = new JDialog();
+                jd.setTitle("Creating a New Event");
+                jd.setSize(calendarPanel.getWidth() / 3, calendarPanel.getHeight());
+                jd.setLocationRelativeTo(null);
+                jd.setVisible(true);
+                
+                jd.add(eventPanel);
+                
+                jd.pack();
+                
+                eventPanel.addCreateBtnActionListener(new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        Utility.saveToFile("eventName", eventPanel.getEventName());
+                        jd.dispose();
+                        eventPanel.reset();
+                        calendarPanel.addEvent(1, 1, Utility.loadFromFile("eventName"));
+                    }
+                });
+            } 
+        });
+        
+        // Adding an Event panel
+        this.eventPanel = new EventPanel();
         
         // Adding a Classes panel
         this.classesPanel = new ClassesPanel();
@@ -97,10 +161,21 @@ public class MainFrame extends javax.swing.JFrame {
             }
         });
         
+        // Adding an Email Panel
         this.emailPanel = new EmailPanel();
-        this.emailPanel.setSize(this.menuPane.getSize());
+        this.emailPanel.setSize(this.getSize());
         this.emailPanel.setBorder(BorderFactory.createEtchedBorder(EtchedBorder.RAISED));
-        // this.mainJPanel.add(this.emailPanel);
+        this.mainJPanel.add(this.emailPanel);
+        this.emailPanel.setVisible(false);
+        this.emailPanel.addBackBtnActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                loginPanel.clearFields();
+                loginPanel.setVisible(true);
+                emailPanel.setVisible(false);
+            }
+            
+        });
         
         this.pack();
     }
