@@ -109,7 +109,7 @@ public class MainFrame extends javax.swing.JFrame {
                     Utility.saveToFile("professorPwd", registrationPanel.getPwd());
                 }
                 registrationPanel.setVisible(false);
-                emailPanel.setEmail(registrationPanel.getEmail());
+                //emailPanel.setEmail(registrationPanel.getEmail());
                 emailPanel.setVisible(true);
                 
             }
@@ -259,14 +259,17 @@ public class MainFrame extends javax.swing.JFrame {
         setTitle("Deadline");
         setBackground(new java.awt.Color(255, 255, 255));
 
+        mainJPanel.setBackground(new java.awt.Color(153, 0, 51));
         mainJPanel.setPreferredSize(new java.awt.Dimension(900, 600));
 
+        titleJPanel.setBackground(new java.awt.Color(204, 0, 51));
         titleJPanel.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
         jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
         jLabel1.setText("DeadLine");
 
-        logoutBtn.setBackground(new java.awt.Color(102, 102, 102));
+        logoutBtn.setBackground(new java.awt.Color(102, 0, 102));
+        logoutBtn.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 12)); // NOI18N
         logoutBtn.setText("Logout");
         logoutBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

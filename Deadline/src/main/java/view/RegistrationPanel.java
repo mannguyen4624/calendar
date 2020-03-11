@@ -111,7 +111,6 @@ public class RegistrationPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         iAmAButtonGroup = new javax.swing.ButtonGroup();
-        accountCreationLabel = new javax.swing.JLabel();
         accountCreationPanel = new javax.swing.JPanel();
         iAmAPanel = new javax.swing.JPanel();
         iAmALabel = new javax.swing.JLabel();
@@ -135,11 +134,10 @@ public class RegistrationPanel extends javax.swing.JPanel {
         notARobotCheckbox = new javax.swing.JCheckBox();
         createAccountPanel = new javax.swing.JPanel();
         createAccountButton = new javax.swing.JButton();
+        accountCreationLabel = new javax.swing.JLabel();
 
+        setBackground(new java.awt.Color(204, 0, 51));
         setPreferredSize(new java.awt.Dimension(900, 600));
-
-        accountCreationLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
-        accountCreationLabel.setText("Account Creation");
 
         iAmALabel.setText("I Am A:");
 
@@ -302,14 +300,14 @@ public class RegistrationPanel extends javax.swing.JPanel {
         robotPanel.setLayout(robotPanelLayout);
         robotPanelLayout.setHorizontalGroup(
             robotPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(robotPanelLayout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, robotPanelLayout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
                 .addComponent(notARobotCheckbox)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
         );
         robotPanelLayout.setVerticalGroup(
             robotPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(robotPanelLayout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, robotPanelLayout.createSequentialGroup()
                 .addComponent(notARobotCheckbox)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -323,7 +321,7 @@ public class RegistrationPanel extends javax.swing.JPanel {
         createAccountPanelLayout.setHorizontalGroup(
             createAccountPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, createAccountPanelLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(27, Short.MAX_VALUE)
                 .addComponent(createAccountButton)
                 .addContainerGap())
         );
@@ -335,6 +333,9 @@ public class RegistrationPanel extends javax.swing.JPanel {
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
+        accountCreationLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 24)); // NOI18N
+        accountCreationLabel.setText("Account Creation");
+
         javax.swing.GroupLayout accountCreationPanelLayout = new javax.swing.GroupLayout(accountCreationPanel);
         accountCreationPanel.setLayout(accountCreationPanelLayout);
         accountCreationPanelLayout.setHorizontalGroup(
@@ -343,13 +344,13 @@ public class RegistrationPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(accountCreationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(iAmAPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(accountCreationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(emailPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(namePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(passwordPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(confirmPasswordPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(accountCreationPanelLayout.createSequentialGroup()
                         .addGroup(accountCreationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(accountCreationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(emailPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(namePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(passwordPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(confirmPasswordPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(accountCreationPanelLayout.createSequentialGroup()
                                 .addGap(79, 79, 79)
                                 .addComponent(createAccountPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -358,11 +359,17 @@ public class RegistrationPanel extends javax.swing.JPanel {
                                 .addComponent(robotPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addGap(35, 35, 35))
+            .addGroup(accountCreationPanelLayout.createSequentialGroup()
+                .addGap(76, 76, 76)
+                .addComponent(accountCreationLabel)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         accountCreationPanelLayout.setVerticalGroup(
             accountCreationPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, accountCreationPanelLayout.createSequentialGroup()
-                .addGap(0, 12, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(accountCreationLabel)
+                .addGap(18, 18, 18)
                 .addComponent(iAmAPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, 0)
                 .addComponent(namePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -382,23 +389,17 @@ public class RegistrationPanel extends javax.swing.JPanel {
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(271, Short.MAX_VALUE)
-                .addComponent(accountCreationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(272, 272, 272))
             .addGroup(layout.createSequentialGroup()
-                .addGap(338, 338, 338)
-                .addComponent(accountCreationLabel)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(271, 271, 271)
+                .addComponent(accountCreationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(272, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(136, 136, 136)
-                .addComponent(accountCreationLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(128, 128, 128)
                 .addComponent(accountCreationPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(126, Short.MAX_VALUE))
+                .addContainerGap(128, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 

@@ -71,7 +71,9 @@ public class LoginPanel extends javax.swing.JPanel {
         forgetPwdLabel = new javax.swing.JLabel();
         createAccLabel = new javax.swing.JLabel();
 
-        jPanel1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        setBackground(new java.awt.Color(204, 0, 51));
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createMatteBorder(3, 3, 3, 3, new java.awt.Color(0, 0, 0)));
 
         loginBtn.setText("Login");
 
