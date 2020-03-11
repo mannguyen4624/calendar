@@ -52,7 +52,7 @@ public class CalendarPanel extends javax.swing.JPanel {
         jButton3 = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        tagLabel = new javax.swing.JLabel();
 
         setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
 
@@ -81,8 +81,6 @@ public class CalendarPanel extends javax.swing.JPanel {
         calendarTable.setRowHeight(calendarTable.getPreferredScrollableViewportSize().height / calendarTable.getRowCount());
         calendarTable.setGridColor(Color.BLACK);
         calendarTable.setShowGrid(true);
-        calendarTable.setShowHorizontalLines(true);
-        calendarTable.setShowVerticalLines(true);
         jScrollPane1.setViewportView(calendarTable);
 
         createEventBtn.setText("Create Event");
@@ -112,7 +110,7 @@ public class CalendarPanel extends javax.swing.JPanel {
 
         jLabel2.setText("Tags");
 
-        jLabel3.setText("No tags yet");
+        tagLabel.setText("No tags yet");
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -125,7 +123,7 @@ public class CalendarPanel extends javax.swing.JPanel {
                         .addComponent(jLabel2))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jLabel3)))
+                        .addComponent(tagLabel)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
@@ -134,7 +132,7 @@ public class CalendarPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addComponent(tagLabel)
                 .addContainerGap(375, Short.MAX_VALUE))
         );
 
@@ -152,8 +150,7 @@ public class CalendarPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jButton2))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 573, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -181,10 +178,14 @@ public class CalendarPanel extends javax.swing.JPanel {
         this.repaint();
     }//GEN-LAST:event_createEventBtnActionPerformed
 
+    public void setTagLabel(String str) {
+        this.tagLabel.setText(str);
+    }
+    
     // Add the event to the calendar based on the given row and column
     public void addEvent(int row, int col, String name) {
         String newEntry = this.calendarTable.getValueAt(row, col) + "\n" + name;
-        this.calendarTable.setValueAt(newEntry, row, col);
+        this.calendarTable.setValueAt(newEntry + "\n", row, col);
     }
     
     public void addCreateEventBtnActionListener(ActionListener a) {
@@ -213,8 +214,8 @@ public class CalendarPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel tagLabel;
     // End of variables declaration//GEN-END:variables
 }

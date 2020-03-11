@@ -5,19 +5,101 @@
  */
 package view.professor;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.*;
+import javax.swing.event.DocumentEvent;
+import utils.SimpleDocumentListener;
+
 /**
  *
  * @author Binh
  */
 public class AddClassPanel extends javax.swing.JPanel {
-
+    private List<ActionListener> createClassBtnActionListeners;
     /**
      * Creates new form AddClassPanel
      */
     public AddClassPanel() {
         initComponents();
+      
+        this.createClassBtnActionListeners = new ArrayList<>();
+        this.createButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for (ActionListener l : createClassBtnActionListeners) {
+                    l.actionPerformed(e);
+                }
+            }
+        });
+        
+        this.subjectText.getDocument().addDocumentListener(new SimpleDocumentListener() {
+            @Override
+            public void update(DocumentEvent e) {
+                if (subjectText.getText().length() >= 1 && courseText.getText().length() >= 1 && sectionText.getText().length() >= 1) {
+                    daysPanel.setVisible(true);
+                }
+            }
+        });
+        
+        this.courseText.getDocument().addDocumentListener(new SimpleDocumentListener() {
+            @Override
+            public void update(DocumentEvent e) {
+                if (subjectText.getText().length() >= 1 && courseText.getText().length() >= 1 && sectionText.getText().length() >= 1) {
+                    daysPanel.setVisible(true);
+                }
+            }
+        });
+        
+        this.sectionText.getDocument().addDocumentListener(new SimpleDocumentListener() {
+            @Override
+            public void update(DocumentEvent e) {
+                if (subjectText.getText().length() >= 1 && courseText.getText().length() >= 1 && sectionText.getText().length() >= 1) {
+                    daysPanel.setVisible(true);
+                }
+            }
+        });
+        
+        this.startDateText.getDocument().addDocumentListener(new SimpleDocumentListener() {
+            @Override
+            public void update(DocumentEvent e) {
+                if (startDateText.getText().equals("mm/dd/yy")) {
+                    startDateText.setText("");
+                }
+                if (!startDateText.getText().equals("mm/dd/yy") && startDateText.getText().length() >= 1
+                        && !endDateText.getText().equals("mm/dd/yy") && endDateText.getText().length() >= 1) {
+                    createButtonPanel.setVisible(true);
+                }
+            }
+        });
+        
+        this.endDateText.getDocument().addDocumentListener(new SimpleDocumentListener() {
+            @Override
+            public void update(DocumentEvent e) {
+                if (endDateText.getText().equals("mm/dd/yy")) {
+                    endDateText.setText("");
+                }
+                if (!startDateText.getText().equals("mm/dd/yy") && startDateText.getText().length() >= 1
+                        && !endDateText.getText().equals("mm/dd/yy") && endDateText.getText().length() >= 1) {
+                    createButtonPanel.setVisible(true);
+                }
+            }
+        });
+
+        
+        
     }
 
+    public void addCreateClassBtnActionListener(ActionListener a) {
+        if (!this.createClassBtnActionListeners.contains(a)) {
+            this.createClassBtnActionListeners.add(a);
+        }
+    }
+    
+    public String getSubjectCourse() {
+        return this.subjectText.getText() + this.courseText.getText();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -27,19 +109,462 @@ public class AddClassPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        middlePanel = new javax.swing.JPanel();
+        titleLabel = new javax.swing.JLabel();
+        coursePanel = new javax.swing.JPanel();
+        subjectLabel = new javax.swing.JLabel();
+        courseLabel = new javax.swing.JLabel();
+        sectionLabel = new javax.swing.JLabel();
+        sectionText = new javax.swing.JTextField();
+        courseText = new javax.swing.JTextField();
+        subjectText = new javax.swing.JTextField();
+        daysPanel = new javax.swing.JPanel();
+        daysLabel = new javax.swing.JLabel();
+        mondayCheck = new javax.swing.JCheckBox();
+        tuesdayCheck = new javax.swing.JCheckBox();
+        wednesdayCheck = new javax.swing.JCheckBox();
+        thursdayCheck = new javax.swing.JCheckBox();
+        fridayCheck = new javax.swing.JCheckBox();
+        saturdayCheck = new javax.swing.JCheckBox();
+        timePanel = new javax.swing.JPanel();
+        startTimeLabel = new javax.swing.JLabel();
+        endTimeLabel = new javax.swing.JLabel();
+        startTime = new javax.swing.JComboBox<>();
+        endTime = new javax.swing.JComboBox<>();
+        customButton = new javax.swing.JRadioButton();
+        datePanel = new javax.swing.JPanel();
+        startDateLabel = new javax.swing.JLabel();
+        endDateLabel = new javax.swing.JLabel();
+        startDateText = new javax.swing.JTextField();
+        endDateText = new javax.swing.JTextField();
+        createButtonPanel = new javax.swing.JPanel();
+        createButton = new javax.swing.JButton();
+
+        setPreferredSize(new java.awt.Dimension(1920, 900));
+
+        middlePanel.setAlignmentX(10.0F);
+        middlePanel.setAlignmentY(10.0F);
+        middlePanel.setPreferredSize(new java.awt.Dimension(310, 350));
+
+        titleLabel.setText("Class Creation");
+
+        subjectLabel.setText("Subject");
+
+        courseLabel.setText("Course");
+
+        sectionLabel.setText("Section");
+
+        sectionText.setPreferredSize(new java.awt.Dimension(100, 26));
+
+        courseText.setMinimumSize(new java.awt.Dimension(30, 26));
+        courseText.setPreferredSize(new java.awt.Dimension(100, 26));
+
+        subjectText.setPreferredSize(new java.awt.Dimension(100, 26));
+
+        javax.swing.GroupLayout coursePanelLayout = new javax.swing.GroupLayout(coursePanel);
+        coursePanel.setLayout(coursePanelLayout);
+        coursePanelLayout.setHorizontalGroup(
+            coursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(coursePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(coursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(subjectText, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(subjectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(coursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(courseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(courseText, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(coursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(sectionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sectionText, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
+        );
+        coursePanelLayout.setVerticalGroup(
+            coursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(coursePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(coursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(subjectLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(courseLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sectionLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
+                .addGroup(coursePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(subjectText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(courseText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sectionText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0))
+        );
+
+        daysPanel.setVisible(false);
+
+        daysLabel.setText("Lecture Days");
+
+        mondayCheck.setText("M");
+        mondayCheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                mondayCheckActionPerformed(evt);
+            }
+        });
+
+        tuesdayCheck.setText("T");
+        tuesdayCheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tuesdayCheckActionPerformed(evt);
+            }
+        });
+
+        wednesdayCheck.setText("W");
+        wednesdayCheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                wednesdayCheckActionPerformed(evt);
+            }
+        });
+
+        thursdayCheck.setText("R");
+        thursdayCheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                thursdayCheckActionPerformed(evt);
+            }
+        });
+
+        fridayCheck.setText("F");
+        fridayCheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                fridayCheckActionPerformed(evt);
+            }
+        });
+
+        saturdayCheck.setText("S");
+        saturdayCheck.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                saturdayCheckActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout daysPanelLayout = new javax.swing.GroupLayout(daysPanel);
+        daysPanel.setLayout(daysPanelLayout);
+        daysPanelLayout.setHorizontalGroup(
+            daysPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(daysPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(daysPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(daysPanelLayout.createSequentialGroup()
+                        .addComponent(daysLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(daysPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(mondayCheck)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tuesdayCheck)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(wednesdayCheck)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(thursdayCheck)
+                        .addGap(18, 18, 18)
+                        .addComponent(fridayCheck)
+                        .addGap(18, 18, 18)
+                        .addComponent(saturdayCheck)
+                        .addGap(21, 21, 21))))
+        );
+        daysPanelLayout.setVerticalGroup(
+            daysPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(daysPanelLayout.createSequentialGroup()
+                .addComponent(daysLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addGroup(daysPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(wednesdayCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(saturdayCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tuesdayCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(fridayCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(thursdayCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(mondayCheck, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0))
+        );
+
+        timePanel.setVisible(false);
+
+        startTimeLabel.setText("Start Time");
+
+        endTimeLabel.setText("End Time");
+
+        startTime.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--select time--", "8:00 AM", "9:15 AM", "9:50 AM", "10:30 AM", "11:45 AM", "1:35 PM", "2:50 PM", "3:25 PM", "4:35 PM" }));
+        startTime.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startTimeActionPerformed(evt);
+            }
+        });
+
+        endTime.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "--select time--", "9:05 AM", "9:40 AM", "10:20 AM", "11:30 AM", "11:35 AM", "12:50 PM", "1:25 PM", "2:40 PM", "3:15 PM", "4:30 PM", "5:05 PM", "5:25 PM", "5:40 PM" }));
+        endTime.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                endTimeActionPerformed(evt);
+            }
+        });
+
+        customButton.setText("Custom Times");
+        customButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                customButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout timePanelLayout = new javax.swing.GroupLayout(timePanel);
+        timePanel.setLayout(timePanelLayout);
+        timePanelLayout.setHorizontalGroup(
+            timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(timePanelLayout.createSequentialGroup()
+                .addComponent(customButton)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, timePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(startTimeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 111, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(startTime, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(timePanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(endTimeLabel)
+                        .addGap(107, 107, 107))
+                    .addGroup(timePanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(endTime, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+        );
+        timePanelLayout.setVerticalGroup(
+            timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(timePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(startTimeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(endTimeLabel))
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addGroup(timePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(startTime, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(endTime, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(customButton)
+                .addGap(25, 25, 25))
+        );
+
+        datePanel.setVisible(false);
+
+        startDateLabel.setText("Start Date");
+
+        endDateLabel.setText("End Date");
+
+        startDateText.setText("mm/dd/yy");
+        startDateText.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                startDateTextFocusGained(evt);
+            }
+        });
+
+        endDateText.setText("mm/dd/yy");
+        endDateText.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                endDateTextFocusGained(evt);
+            }
+        });
+
+        javax.swing.GroupLayout datePanelLayout = new javax.swing.GroupLayout(datePanel);
+        datePanel.setLayout(datePanelLayout);
+        datePanelLayout.setHorizontalGroup(
+            datePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(datePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(datePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(startDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(startDateText, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(datePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(endDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(endDateText, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        datePanelLayout.setVerticalGroup(
+            datePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(datePanelLayout.createSequentialGroup()
+                .addGroup(datePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(startDateLabel)
+                    .addComponent(endDateLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 19, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, 0)
+                .addGroup(datePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(endDateText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(startDateText, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        createButtonPanel.setVisible(false);
+
+        createButton.setText("Create Class");
+
+        javax.swing.GroupLayout createButtonPanelLayout = new javax.swing.GroupLayout(createButtonPanel);
+        createButtonPanel.setLayout(createButtonPanelLayout);
+        createButtonPanelLayout.setHorizontalGroup(
+            createButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(createButtonPanelLayout.createSequentialGroup()
+                .addComponent(createButton, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 1, Short.MAX_VALUE))
+        );
+        createButtonPanelLayout.setVerticalGroup(
+            createButtonPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(createButtonPanelLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(createButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        javax.swing.GroupLayout middlePanelLayout = new javax.swing.GroupLayout(middlePanel);
+        middlePanel.setLayout(middlePanelLayout);
+        middlePanelLayout.setHorizontalGroup(
+            middlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(middlePanelLayout.createSequentialGroup()
+                .addGroup(middlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(middlePanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(coursePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 336, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(daysPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(timePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap())
+            .addGroup(middlePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(datePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(middlePanelLayout.createSequentialGroup()
+                .addGroup(middlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(middlePanelLayout.createSequentialGroup()
+                        .addGap(115, 115, 115)
+                        .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(middlePanelLayout.createSequentialGroup()
+                        .addGap(101, 101, 101)
+                        .addComponent(createButtonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        middlePanelLayout.setVerticalGroup(
+            middlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(middlePanelLayout.createSequentialGroup()
+                .addComponent(titleLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(coursePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(daysPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(timePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(datePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(createButtonPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(middlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(middlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, 320, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 580, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void endTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_endTimeActionPerformed
+        // TODO add your handling code here:
+        if (!(startTime.getSelectedItem().toString().equals("--select time--")) && !(endTime.getSelectedItem().toString().equals("--select time--"))) {
+            datePanel.setVisible(true);
+        }
+    }//GEN-LAST:event_endTimeActionPerformed
+
+    private void customButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_customButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_customButtonActionPerformed
+
+    private void thursdayCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_thursdayCheckActionPerformed
+        // TODO add your handling code here:
+        timePanel.setVisible(true);
+    }//GEN-LAST:event_thursdayCheckActionPerformed
+
+    private void startTimeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startTimeActionPerformed
+        // TODO add your handling code here:
+        if (!(startTime.getSelectedItem().toString().equals("--select time--")) && !(endTime.getSelectedItem().toString().equals("--select time--"))) {
+            datePanel.setVisible(true);
+        }
+    }//GEN-LAST:event_startTimeActionPerformed
+
+    private void startDateTextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_startDateTextFocusGained
+        // TODO add your handling code here:
+        if (startDateText.getText().equals("mm/dd/yy")) {
+            startDateText.setText("");
+        }
+    }//GEN-LAST:event_startDateTextFocusGained
+
+    private void endDateTextFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_endDateTextFocusGained
+        // TODO add your handling code here:
+        if (endDateText.getText().equals("mm/dd/yy")) {
+            endDateText.setText("");
+        }
+    }//GEN-LAST:event_endDateTextFocusGained
+
+    private void saturdayCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saturdayCheckActionPerformed
+        // TODO add your handling code here:
+        timePanel.setVisible(true);
+    }//GEN-LAST:event_saturdayCheckActionPerformed
+
+    private void mondayCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mondayCheckActionPerformed
+        // TODO add your handling code here:
+        timePanel.setVisible(true);
+    }//GEN-LAST:event_mondayCheckActionPerformed
+
+    private void tuesdayCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tuesdayCheckActionPerformed
+        // TODO add your handling code here:
+        timePanel.setVisible(true);
+    }//GEN-LAST:event_tuesdayCheckActionPerformed
+
+    private void wednesdayCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_wednesdayCheckActionPerformed
+        // TODO add your handling code here:
+        timePanel.setVisible(true);
+    }//GEN-LAST:event_wednesdayCheckActionPerformed
+
+    private void fridayCheckActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_fridayCheckActionPerformed
+        // TODO add your handling code here:
+        timePanel.setVisible(true);
+    }//GEN-LAST:event_fridayCheckActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel courseLabel;
+    private javax.swing.JPanel coursePanel;
+    private javax.swing.JTextField courseText;
+    private javax.swing.JButton createButton;
+    private javax.swing.JPanel createButtonPanel;
+    private javax.swing.JRadioButton customButton;
+    private javax.swing.JPanel datePanel;
+    private javax.swing.JLabel daysLabel;
+    private javax.swing.JPanel daysPanel;
+    private javax.swing.JLabel endDateLabel;
+    private javax.swing.JTextField endDateText;
+    private javax.swing.JComboBox<String> endTime;
+    private javax.swing.JLabel endTimeLabel;
+    private javax.swing.JCheckBox fridayCheck;
+    private javax.swing.JPanel middlePanel;
+    private javax.swing.JCheckBox mondayCheck;
+    private javax.swing.JCheckBox saturdayCheck;
+    private javax.swing.JLabel sectionLabel;
+    private javax.swing.JTextField sectionText;
+    private javax.swing.JLabel startDateLabel;
+    private javax.swing.JTextField startDateText;
+    private javax.swing.JComboBox<String> startTime;
+    private javax.swing.JLabel startTimeLabel;
+    private javax.swing.JLabel subjectLabel;
+    private javax.swing.JTextField subjectText;
+    private javax.swing.JCheckBox thursdayCheck;
+    private javax.swing.JPanel timePanel;
+    private javax.swing.JLabel titleLabel;
+    private javax.swing.JCheckBox tuesdayCheck;
+    private javax.swing.JCheckBox wednesdayCheck;
     // End of variables declaration//GEN-END:variables
 }

@@ -28,6 +28,10 @@ public class ClassesPanel extends javax.swing.JPanel {
         });
     }
     
+    public void addClass(String className) {
+        this.textArea.setText(this.textArea.getText() + "\n" + className);
+    }
+    
     public void addAddClassBtnActionListener(ActionListener a) {
         if (!this.addClassBtnActionListeners.contains(a)) {
             this.addClassBtnActionListeners.add(a);
@@ -50,14 +54,20 @@ public class ClassesPanel extends javax.swing.JPanel {
         addClassBtn = new javax.swing.JButton();
         listPanel = new javax.swing.JPanel();
         classesLabel = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        mainScrollPane = new javax.swing.JScrollPane();
+        textArea = new javax.swing.JTextArea();
 
         addClassBtn.setText("Add Class");
 
         classesLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
         classesLabel.setText("Classes:");
 
-        jScrollPane1.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        mainScrollPane.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        textArea.setColumns(20);
+        textArea.setRows(5);
+        textArea.setEnabled(false);
+        mainScrollPane.setViewportView(textArea);
 
         javax.swing.GroupLayout listPanelLayout = new javax.swing.GroupLayout(listPanel);
         listPanel.setLayout(listPanelLayout);
@@ -66,7 +76,7 @@ public class ClassesPanel extends javax.swing.JPanel {
             .addGroup(listPanelLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(listPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
+                    .addComponent(mainScrollPane)
                     .addGroup(listPanelLayout.createSequentialGroup()
                         .addComponent(classesLabel)
                         .addGap(0, 0, Short.MAX_VALUE)))
@@ -78,7 +88,7 @@ public class ClassesPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addComponent(classesLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE))
+                .addComponent(mainScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -105,8 +115,9 @@ public class ClassesPanel extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton addClassBtn;
     private javax.swing.JLabel classesLabel;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JPanel listPanel;
+    private javax.swing.JScrollPane mainScrollPane;
+    private javax.swing.JTextArea textArea;
     // End of variables declaration//GEN-END:variables
 
 }

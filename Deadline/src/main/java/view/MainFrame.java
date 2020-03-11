@@ -9,11 +9,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.*;
 import javax.swing.border.EtchedBorder;
-import org.apache.commons.configuration.ConfigurationException;
 import utils.Utility;
 
 /**
@@ -27,6 +24,8 @@ public class MainFrame extends javax.swing.JFrame {
     private EventPanel eventPanel;
     private ClassesPanel classesPanel;
     private EmailPanel emailPanel;
+    private view.student.AddClassPanel addClassPanelStudent;
+    private view.professor.AddClassPanel addClassPanelProfessor;
     private int loggedUser;  // 0 - not logged in, -1 - student, 1 - professor
     
     /**
@@ -96,6 +95,7 @@ public class MainFrame extends javax.swing.JFrame {
         this.registrationPanel = new RegistrationPanel();
         this.registrationPanel.setSize(this.getSize());
         this.mainJPanel.add(this.registrationPanel);
+        this.registrationPanel.setVisible(false);
         this.registrationPanel.addCreateAccBtnActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -156,8 +156,15 @@ public class MainFrame extends javax.swing.JFrame {
             public void actionPerformed(ActionEvent e) {
                 System.out.println("Clicked");
                 classesPanel.setVisible(false);
-                // TODO switch to AddClassPanel (as student)
-                
+                if (loggedUser == -1) {
+                    //Student
+                    addClassPanelProfessor.setVisible(false);
+                    addClassPanelStudent.setVisible(true);
+                } else if (loggedUser == 1) {
+                    // Professor
+                    addClassPanelStudent.setVisible(false);
+                    addClassPanelProfessor.setVisible(true);
+                }
             }
         });
         
@@ -173,9 +180,59 @@ public class MainFrame extends javax.swing.JFrame {
                 loginPanel.clearFields();
                 loginPanel.setVisible(true);
                 emailPanel.setVisible(false);
+            }            
+        });
+        
+        // Adding an AddClassPanel (as a student)
+        this.addClassPanelStudent = new view.student.AddClassPanel();
+        this.addClassPanelStudent.setSize(this.panelForClasses.getSize());
+        this.panelForClasses.add(this.addClassPanelStudent);
+        this.addClassPanelStudent.setVisible(false);
+        this.addClassPanelStudent.addAddClassBtnActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String lh = addClassPanelStudent.getSubjectCourse();
+                calendarPanel.setTagLabel(lh);
+                addClassPanelStudent.setVisible(false);
+                classesPanel.setVisible(true);
+                menuPane.setSelectedIndex(0);
+                classesPanel.addClass(lh);
+                for (int i = 1; i < 5; i++) {
+                    calendarPanel.addEvent(i, 1, lh);
+                }
+                for (int i = 0; i < 5; i++) {
+                    calendarPanel.addEvent(i, 3, lh);
+                } 
+                for (int i = 0; i < 5; i++) {
+                    calendarPanel.addEvent(i, 4, lh);
+                }
+            } 
+        });
+        
+        // Adding an AddClassPanel (as a professor)
+        this.addClassPanelProfessor = new view.professor.AddClassPanel();
+        this.addClassPanelProfessor.setSize(this.panelForClasses.getSize());
+        this.panelForClasses.add(this.addClassPanelProfessor);
+        this.addClassPanelProfessor.setVisible(false);
+        this.addClassPanelProfessor.addCreateClassBtnActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                String courseName = addClassPanelProfessor.getSubjectCourse();
+                calendarPanel.setTagLabel(courseName);
+                addClassPanelProfessor.setVisible(false);
+                classesPanel.setVisible(true);
+                menuPane.setSelectedIndex(0);
+                classesPanel.addClass(courseName);
+                for (int i = 1; i < 5; i++) {
+                    calendarPanel.addEvent(i, 2, courseName);
+                }
+                for (int i = 0; i < 5; i++) {
+                    calendarPanel.addEvent(i, 5, courseName);
+                }                 
             }
             
         });
+        
         
         this.pack();
     }
@@ -201,7 +258,6 @@ public class MainFrame extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Deadline");
         setBackground(new java.awt.Color(255, 255, 255));
-        setPreferredSize(new java.awt.Dimension(900, 600));
 
         mainJPanel.setPreferredSize(new java.awt.Dimension(900, 600));
 
@@ -245,7 +301,17 @@ public class MainFrame extends javax.swing.JFrame {
         panelForCalendar.setLayout(new java.awt.BorderLayout());
         menuPane.addTab("Calendar", panelForCalendar);
 
-        panelForClasses.setLayout(new java.awt.BorderLayout());
+        javax.swing.GroupLayout panelForClassesLayout = new javax.swing.GroupLayout(panelForClasses);
+        panelForClasses.setLayout(panelForClassesLayout);
+        panelForClassesLayout.setHorizontalGroup(
+            panelForClassesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 886, Short.MAX_VALUE)
+        );
+        panelForClassesLayout.setVerticalGroup(
+            panelForClassesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 491, Short.MAX_VALUE)
+        );
+
         menuPane.addTab("Classes", panelForClasses);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
