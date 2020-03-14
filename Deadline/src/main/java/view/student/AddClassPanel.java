@@ -5,17 +5,85 @@
  */
 package view.student;
 
+import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.*;
+
 /**
  *
  * @author Binh
  */
 public class AddClassPanel extends javax.swing.JPanel {
-
+    private List<ActionListener> addClassBtnActionListeners;
     /**
      * Creates new form AddClassPanel
      */
     public AddClassPanel() {
         initComponents();
+        
+        this.courseBox.setVisible(false);
+        this.sectionBox.setVisible(false);
+        this.createButton.setVisible(false);
+        
+        this.subjectBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (subjectBox.getSelectedIndex() != 0) {
+                    courseBox.setVisible(true);
+                }
+            }
+        });
+        
+        this.courseBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (courseBox.getSelectedIndex() != 0) {
+                    sectionBox.setVisible(true);
+                }
+            }
+        });
+        
+        this.sectionBox.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                if (sectionBox.getSelectedIndex() != 0) {
+                    createButton.setVisible(true);
+                    String lh = subjectBox.getSelectedItem().toString()
+                            + courseBox.getSelectedItem().toString();
+                    // Populate the calendar
+                    calendarTable.setValueAt(lh, 1, 2);
+                    calendarTable.setValueAt(lh, 2, 2);
+                    calendarTable.setValueAt(lh, 3, 2);
+                    calendarTable.setValueAt(lh, 1, 4);
+                    calendarTable.setValueAt(lh, 2, 4);
+                    calendarTable.setValueAt(lh, 3, 4);
+                    calendarTable.setValueAt(lh, 1, 5);
+                    calendarTable.setValueAt(lh, 2, 5);
+                    calendarTable.setValueAt(lh, 3, 5);
+                }
+            }
+        });
+        
+        this.addClassBtnActionListeners = new ArrayList<>();
+        this.createButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                for (ActionListener l : addClassBtnActionListeners) {
+                    l.actionPerformed(e);
+                }
+            } 
+        });
+    }
+    
+    public String getSubjectCourse() {
+        return subjectBox.getSelectedItem().toString() + courseBox.getSelectedItem().toString();
+    }
+    
+    public void addAddClassBtnActionListener(ActionListener a) {
+        if (!this.addClassBtnActionListeners.contains(a)) {
+            this.addClassBtnActionListeners.add(a);
+        }
     }
 
     /**
@@ -27,19 +95,132 @@ public class AddClassPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        middlePanel = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        subjectBox = new javax.swing.JComboBox<>();
+        courseBox = new javax.swing.JComboBox<>();
+        sectionBox = new javax.swing.JComboBox<>();
+        createButton = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        calendarTable = new javax.swing.JTable();
+
+        setPreferredSize(new java.awt.Dimension(1920, 900));
+
+        jLabel1.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        jLabel1.setText("Choose Class");
+
+        subjectBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Subject", "IS", "CS", "ACCT" }));
+        subjectBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                subjectBoxActionPerformed(evt);
+            }
+        });
+
+        courseBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Course", "4300", "3500", "3700" }));
+
+        sectionBox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Section", "1", "2", "3" }));
+
+        createButton.setText("Add Class");
+        createButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                createButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout middlePanelLayout = new javax.swing.GroupLayout(middlePanel);
+        middlePanel.setLayout(middlePanelLayout);
+        middlePanelLayout.setHorizontalGroup(
+            middlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(middlePanelLayout.createSequentialGroup()
+                .addGroup(middlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(middlePanelLayout.createSequentialGroup()
+                        .addGap(32, 32, 32)
+                        .addGroup(middlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(sectionBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(courseBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(subjectBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(middlePanelLayout.createSequentialGroup()
+                        .addGap(43, 43, 43)
+                        .addComponent(createButton)))
+                .addContainerGap(79, Short.MAX_VALUE))
+        );
+        middlePanelLayout.setVerticalGroup(
+            middlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(middlePanelLayout.createSequentialGroup()
+                .addGap(30, 30, 30)
+                .addComponent(jLabel1)
+                .addGap(27, 27, 27)
+                .addComponent(subjectBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(courseBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(sectionBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(31, 31, 31)
+                .addComponent(createButton)
+                .addContainerGap(118, Short.MAX_VALUE))
+        );
+
+        calendarTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"8am", null, null, null, null, null, null, null},
+                {"9am", null, null, null, null, null, null, null},
+                {"10am", "", null, null, null, null, null, null},
+                {"11am", null, null, null, null, null, null, null},
+                {"12pm", null, null, null, null, null, null, null},
+                {"1pm", null, null, null, null, null, null, null},
+                {"2pm", null, null, null, null, null, null, null},
+                {"3pm", null, null, null, null, null, null, null},
+                {"4pm", null, null, null, null, null, null, null},
+                {"5pm", null, null, null, null, null, null, null},
+                {"6pm", null, null, null, null, null, null, null},
+                {"7pm", null, null, null, null, null, null, null},
+                {"8pm", null, null, null, null, null, null, null},
+                {"9pm", null, null, null, null, null, null, null},
+                {"10pm", null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "time", "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"
+            }
+        ));
+        calendarTable.setGridColor(Color.BLACK);
+        calendarTable.setShowGrid(true);
+        calendarTable.setRowHeight(calendarTable.getPreferredScrollableViewportSize().height / calendarTable.getRowCount());
+        jScrollPane1.setViewportView(calendarTable);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(middlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(middlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void createButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_createButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_createButtonActionPerformed
+
+    private void subjectBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_subjectBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_subjectBoxActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTable calendarTable;
+    private javax.swing.JComboBox<String> courseBox;
+    private javax.swing.JButton createButton;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JPanel middlePanel;
+    private javax.swing.JComboBox<String> sectionBox;
+    private javax.swing.JComboBox<String> subjectBox;
     // End of variables declaration//GEN-END:variables
 }

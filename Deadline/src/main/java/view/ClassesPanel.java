@@ -1,21 +1,45 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package view;
+
+import java.awt.event.ActionEvent;
+import java.util.List;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 /**
  *
  * @author Binh
  */
 public class ClassesPanel extends javax.swing.JPanel {
-
+    private List<ActionListener> addClassBtnActionListeners;
     /**
      * Creates new form ClassesPanel
      */
     public ClassesPanel() {
         initComponents();
+        
+        // Allows to add subscribers to the events on addClassBtn element
+        this.addClassBtnActionListeners = new ArrayList<>();
+        this.addClassBtn.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                for (ActionListener listener : addClassBtnActionListeners) {
+                    listener.actionPerformed(e);
+                }
+            }
+        });
+    }
+    
+    public void addClass(String className) {
+        this.textArea.setText(this.textArea.getText() + "\n" + className);
+    }
+    
+    public void addAddClassBtnActionListener(ActionListener a) {
+        if (!this.addClassBtnActionListeners.contains(a)) {
+            this.addClassBtnActionListeners.add(a);
+        }
+    }
+    
+    public void removeAddClassBtnActionListener(ActionListener a) {
+        this.addClassBtnActionListeners.remove(a);
     }
 
     /**
@@ -27,19 +51,73 @@ public class ClassesPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        addClassBtn = new javax.swing.JButton();
+        listPanel = new javax.swing.JPanel();
+        classesLabel = new javax.swing.JLabel();
+        mainScrollPane = new javax.swing.JScrollPane();
+        textArea = new javax.swing.JTextArea();
+
+        addClassBtn.setText("Add Class");
+
+        classesLabel.setFont(new java.awt.Font("Arial Rounded MT Bold", 0, 18)); // NOI18N
+        classesLabel.setText("Classes:");
+
+        mainScrollPane.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+
+        textArea.setColumns(20);
+        textArea.setRows(5);
+        textArea.setEnabled(false);
+        mainScrollPane.setViewportView(textArea);
+
+        javax.swing.GroupLayout listPanelLayout = new javax.swing.GroupLayout(listPanel);
+        listPanel.setLayout(listPanelLayout);
+        listPanelLayout.setHorizontalGroup(
+            listPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(listPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(listPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(mainScrollPane)
+                    .addGroup(listPanelLayout.createSequentialGroup()
+                        .addComponent(classesLabel)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
+        );
+        listPanelLayout.setVerticalGroup(
+            listPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(listPanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(classesLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(mainScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 273, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap(294, Short.MAX_VALUE)
+                .addComponent(addClassBtn)
+                .addContainerGap())
+            .addComponent(listPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(listPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(addClassBtn)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addClassBtn;
+    private javax.swing.JLabel classesLabel;
+    private javax.swing.JPanel listPanel;
+    private javax.swing.JScrollPane mainScrollPane;
+    private javax.swing.JTextArea textArea;
     // End of variables declaration//GEN-END:variables
+
 }
